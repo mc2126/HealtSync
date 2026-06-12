@@ -1,0 +1,92 @@
+﻿@model HealthSync.Models.CheckoutModel
+@{
+    ViewData["Title"] = "Checkout - HealthSync";
+}
+
+<section class="hs-page-header">
+    <div class="hs-container">
+        <span class="hs-eyebrow">Paso 2 de 2</span>
+        <h1 class="hs-page-header__title">Finalizar compra</h1>
+        <p class="hs-page-header__sub">Completa tus datos de envío y pago</p>
+    </div>
+</section>
+
+<section class="hs-privacy">
+    <div class="hs-container" style="max-width:800px;">
+        <form asp-action="Checkout" method="post" style="background:white; border-radius:16px; padding:40px; box-shadow:0 4px 24px rgba(11,31,58,0.08);">
+            @Html.AntiForgeryToken()
+
+            <h3 style="font-family:'Sora',sans-serif; font-size:1.3rem; font-weight:700; color:#0B1F3A; margin-bottom:24px;">📋 Datos de contacto</h3>
+
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px;">
+                <div>
+                    <label asp-for="FullName" style="display:block; font-size:0.9rem; font-weight:600; color:#0B1F3A; margin-bottom:6px;"></label>
+                    <input asp-for="FullName" class="form-control" style="padding:12px; border:1px solid #CBD5E1; border-radius:8px; font-family:Inter,sans-serif;" />
+                    <span asp-validation-for="FullName" style="color:#e74c3c; font-size:0.85rem;"></span>
+                </div>
+                <div>
+                    <label asp-for="Email" style="display:block; font-size:0.9rem; font-weight:600; color:#0B1F3A; margin-bottom:6px;"></label>
+                    <input asp-for="Email" type="email" class="form-control" style="padding:12px; border:1px solid #CBD5E1; border-radius:8px;" />
+                    <span asp-validation-for="Email" style="color:#e74c3c; font-size:0.85rem;"></span>
+                </div>
+            </div>
+
+            <div style="margin-bottom:16px;">
+                <label asp-for="Phone" style="display:block; font-size:0.9rem; font-weight:600; color:#0B1F3A; margin-bottom:6px;"></label>
+                <input asp-for="Phone" class="form-control" style="padding:12px; border:1px solid #CBD5E1; border-radius:8px;" />
+                <span asp-validation-for="Phone" style="color:#e74c3c; font-size:0.85rem;"></span>
+            </div>
+
+            <h3 style="font-family:'Sora',sans-serif; font-size:1.3rem; font-weight:700; color:#0B1F3A; margin:32px 0 24px;"> Dirección de envío</h3>
+
+            <div style="margin-bottom:16px;">
+                <label asp-for="Address" style="display:block; font-size:0.9rem; font-weight:600; color:#0B1F3A; margin-bottom:6px;"></label>
+                <input asp-for="Address" class="form-control" style="padding:12px; border:1px solid #CBD5E1; border-radius:8px;" placeholder="Calle, número, colonia, referencias" />
+                <span asp-validation-for="Address" style="color:#e74c3c; font-size:0.85rem;"></span>
+            </div>
+
+            <div style="margin-bottom:24px;">
+                <label asp-for="Department" style="display:block; font-size:0.9rem; font-weight:600; color:#0B1F3A; margin-bottom:6px;"></label>
+                <select asp-for="Department" class="form-control" style="padding:12px; border:1px solid #CBD5E1; border-radius:8px;">
+                    <option value="">Selecciona un departamento</option>
+                    <option>San Salvador</option>
+                    <option>Santa Ana</option>
+                    <option>San Miguel</option>
+                    <option>La Libertad</option>
+                    <option>Usulután</option>
+                    <option>Sonsonate</option>
+                    <option>La Unión</option>
+                    <option>Chalatenango</option>
+                    <option>Cuscatlán</option>
+                    <option>La Paz</option>
+                    <option>San Vicente</option>
+                    <option>Cabañas</option>
+                    <option>Morazán</option>
+                    <option>Ahuachapán</option>
+                </select>
+                <span asp-validation-for="Department" style="color:#e74c3c; font-size:0.85rem;"></span>
+            </div>
+
+            <h3 style="font-family:'Sora',sans-serif; font-size:1.3rem; font-weight:700; color:#0B1F3A; margin:32px 0 24px;">💳 Método de pago</h3>
+
+            <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:12px; margin-bottom:32px;">
+                @foreach (var method in new[] { ("card", " Tarjeta de crédito/débito"), ("paypal", "🅿️ PayPal"), ("transfer", " Transferencia bancaria"), ("cash", "💵 Contra entrega") })
+                {
+                    <label style="border:2px solid #F0F4F8; border-radius:12px; padding:16px; cursor:pointer; transition:all 0.2s; display:flex; align-items:center; gap:12px;" onmouseover="this.style.borderColor='#00C9B1'" onmouseout="this.style.borderColor='#F0F4F8'">
+                        <input type="radio" name="PaymentMethod" value="@method.Item1" required style="accent-color:#00C9B1;" />
+                        <span style="font-size:0.9rem; font-weight:500; color:#0B1F3A;">@method.Item2</span>
+                    </label>
+                }
+            </div>
+
+            <div style="display:flex; gap:12px; justify-content:space-between; align-items:center;">
+                <a asp-action="Index" class="hs-btn hs-btn--ghost" style="border-color:#0B1F3A; color:#0B1F3A;">← Volver al carrito</a>
+                <button type="submit" class="hs-btn hs-btn--primary hs-btn--lg">Confirmar pedido ✓</button>
+            </div>
+        </form>
+    </div>
+</section>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

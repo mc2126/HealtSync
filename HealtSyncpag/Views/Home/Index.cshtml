@@ -1,0 +1,317 @@
+﻿@{
+    ViewData["Title"] = "HealthSync - Pulsera Inteligente de Salud";
+}
+
+<!-- ══════════════════════════════════════════
+     HERO
+     ═══════════════════════════════════════════ -->
+<section class="hs-hero">
+    <svg class="hs-hero__bg-pulse" viewBox="0 0 1440 200" preserveAspectRatio="none">
+        <path class="hs-pulse-path" d="M0,100 L200,100 L220,40 L240,160 L260,80 L280,120 L300,100 L1440,100" />
+    </svg>
+
+    <div class="hs-container">
+        <div class="hs-hero__content">
+            <span class="hs-eyebrow">Nueva generación · 2026</span>
+            <h1 class="hs-hero__title">
+                Tu salud,<br />
+                <span class="hs-accent">cada latido</span><br />
+                bajo control.
+            </h1>
+            <p class="hs-hero__sub">
+                HealthSync monitorea tu ritmo cardíaco, oxígeno en sangre, sueño y actividad física en tiempo real. Tecnología médica en tu muñeca.
+            </p>
+            <div class="hs-hero__actions">
+                <form asp-controller="Cart" asp-action="Add" method="post" style="display:inline;">
+                    <input type="hidden" name="Id" value="healthsync-watch-001" />
+                    <input type="hidden" name="Name" value="HealthSync SmartBand Pro" />
+                    <input type="hidden" name="Price" value="89.99" />
+                    <input type="hidden" name="Quantity" value="1" />
+                    <button type="submit" class="hs-btn hs-btn--primary hs-btn--lg" id="btn-buy-hero">
+                        🛒 Comprar ahora · $89.99
+                    </button>
+                </form>
+                <a href="#caracteristicas" class="hs-btn hs-btn--ghost hs-btn--lg">Ver características</a>
+            </div>
+        </div>
+
+        <div class="hs-hero__device">
+            <div class="hs-watch">
+                <div class="hs-watch__band hs-watch__band--top"></div>
+                <div class="hs-watch__screen">
+                    <div class="hs-watch__metric">
+                        <span class="hs-watch__icon">♥</span>
+                        <span class="hs-watch__value">72</span>
+                        <span class="hs-watch__unit">BPM</span>
+                    </div>
+                    <div class="hs-watch__bar-wrap">
+                        <div class="hs-watch__bar"></div>
+                    </div>
+                    <div class="hs-watch__metrics-row">
+                        <div class="hs-watch__small-metric">
+                            <span class="hs-watch__small-val">98%</span>
+                            <span class="hs-watch__small-lbl">SpO₂</span>
+                        </div>
+                        <div class="hs-watch__small-metric">
+                            <span class="hs-watch__small-val">36.5°</span>
+                            <span class="hs-watch__small-lbl">Temp</span>
+                        </div>
+                        <div class="hs-watch__small-metric">
+                            <span class="hs-watch__small-val">8.2k</span>
+                            <span class="hs-watch__small-lbl">Pasos</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hs-watch__band hs-watch__band--bottom"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     STATS
+     ══════════════════════════════════════════ -->
+<section class="hs-stats">
+    <div class="hs-container">
+        <div class="hs-stats__grid">
+            <div class="hs-stat">
+                <span class="hs-stat__num">+50k</span>
+                <span class="hs-stat__lbl">Usuarios activos</span>
+            </div>
+            <div class="hs-stat">
+                <span class="hs-stat__num">24/7</span>
+                <span class="hs-stat__lbl">Monitoreo continuo</span>
+            </div>
+            <div class="hs-stat">
+                <span class="hs-stat__num">99.8%</span>
+                <span class="hs-stat__lbl">Precisión médica</span>
+            </div>
+            <div class="hs-stat">
+                <span class="hs-stat__num">7 días</span>
+                <span class="hs-stat__lbl">Batería</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     CARACTERÍSTICAS
+     ═══════════════════════════════════════════ -->
+<section class="hs-features" id="caracteristicas">
+    <div class="hs-container">
+        <span class="hs-eyebrow" style="display:block; text-align:center;">Características</span>
+        <h2 class="hs-section-title">Todo lo que necesitas,<br />en tu muñeca</h2>
+        <p class="hs-section-sub">Sensores de última generación combinados con inteligencia artificial para cuidar tu salud.</p>
+
+        <div class="hs-features__grid">
+            <div class="hs-feature-card">
+                <div class="hs-feature-card__icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" /></svg>
+                </div>
+                <h3 class="hs-feature-card__title">Ritmo cardíaco</h3>
+                <p class="hs-feature-card__desc">Monitoreo 24/7 con alertas inmediatas si detectamos valores fuera del rango normal.</p>
+            </div>
+            <div class="hs-feature-card">
+                <div class="hs-feature-card__icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20" /></svg>
+                </div>
+                <h3 class="hs-feature-card__title">Oxígeno en sangre</h3>
+                <p class="hs-feature-card__desc">Sensor SpO₂ de precisión médica para medir tu saturación de oxígeno en cualquier momento.</p>
+            </div>
+            <div class="hs-feature-card">
+                <div class="hs-feature-card__icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10" /><path d="M12 6v6l4 2" /></svg>
+                </div>
+                <h3 class="hs-feature-card__title">Análisis de sueño</h3>
+                <p class="hs-feature-card__desc">Registra tus fases de sueño y recibe recomendaciones personalizadas para descansar mejor.</p>
+            </div>
+            <div class="hs-feature-card">
+                <div class="hs-feature-card__icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" /></svg>
+                </div>
+                <h3 class="hs-feature-card__title">7 días de batería</h3>
+                <p class="hs-feature-card__desc">Batería de larga duración con carga rápida. 10 minutos de carga = 1 día de uso.</p>
+            </div>
+            <div class="hs-feature-card">
+                <div class="hs-feature-card__icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>
+                </div>
+                <h3 class="hs-feature-card__title">Resistente al agua</h3>
+                <p class="hs-feature-card__desc">Certificación IP68. Úsala en la piscina, la lluvia o el gimnasio sin preocupaciones.</p>
+            </div>
+            <div class="hs-feature-card">
+                <div class="hs-feature-card__icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2" /></svg>
+                </div>
+                <h3 class="hs-feature-card__title">App inteligente</h3>
+                <p class="hs-feature-card__desc">Sincroniza con iOS y Android. Reportes detallados y alertas personalizadas.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     CÓMO FUNCIONA
+     ═══════════════════════════════════════════ -->
+<section class="hs-how">
+    <div class="hs-container">
+        <span class="hs-eyebrow hs-section-title--light" style="display:block; text-align:center;">Cómo funciona</span>
+        <h2 class="hs-section-title hs-section-title--light">Tres pasos para cuidar tu salud</h2>
+        <p class="hs-section-sub" style="color:rgba(255,255,255,0.6);">Empezar es muy sencillo</p>
+
+        <div class="hs-how__steps">
+            <div class="hs-how__step">
+                <div class="hs-how__step-num">1</div>
+                <h3 class="hs-how__step-title">Colócala en tu muñeca</h3>
+                <p class="hs-how__step-desc">Ajusta la correa y enciende la pulsera. Se sincroniza automáticamente con tu teléfono.</p>
+            </div>
+            <div class="hs-how__connector"></div>
+            <div class="hs-how__step">
+                <div class="hs-how__step-num">2</div>
+                <h3 class="hs-how__step-title">Descarga la app</h3>
+                <p class="hs-how__step-desc">Disponible en App Store y Google Play. Crea tu perfil en menos de 2 minutos.</p>
+            </div>
+            <div class="hs-how__connector"></div>
+            <div class="hs-how__step">
+                <div class="hs-how__step-num">3</div>
+                <h3 class="hs-how__step-title">Monitorea tu salud</h3>
+                <p class="hs-how__step-desc">Recibe datos en tiempo real, alertas y reportes semanales directamente en tu celular.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     TESTIMONIOS
+     ═══════════════════════════════════════════ -->
+<section class="hs-testimonials">
+    <div class="hs-container">
+        <span class="hs-eyebrow" style="display:block; text-align:center;">Testimonios</span>
+        <h2 class="hs-section-title">Lo que dicen nuestros usuarios</h2>
+        <p class="hs-section-sub">Miles de personas ya confían en HealthSync</p>
+
+        <div class="hs-testimonials__grid">
+            <div class="hs-testimonial">
+                <p class="hs-testimonial__text">"Detectó una arritmia que ni yo sabía que tenía. Fui al médico a tiempo gracias a HealthSync. Literalmente me salvó la vida."</p>
+                <div class="hs-testimonial__author">
+                    <div class="hs-testimonial__avatar">MR</div>
+                    <div>
+                        <strong>María Rodríguez</strong>
+                        <span>San Salvador</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hs-testimonial">
+                <p class="hs-testimonial__text">"Como deportista, necesito datos precisos. La precisión del SpO₂ y el ritmo cardíaco es comparable a equipos médicos profesionales."</p>
+                <div class="hs-testimonial__author">
+                    <div class="hs-testimonial__avatar">CL</div>
+                    <div>
+                        <strong>Carlos López</strong>
+                        <span>Maratónista</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hs-testimonial">
+                <p class="hs-testimonial__text">"La batería dura toda la semana y la app es muy intuitiva. Mis padres la usan y yo puedo monitorear su salud a distancia."</p>
+                <div class="hs-testimonial__author">
+                    <div class="hs-testimonial__avatar">AG</div>
+                    <div>
+                        <strong>Ana García</strong>
+                        <span>Santa Ana</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     CTA / COMPRAR
+     ═══════════════════════════════════════════ -->
+<section class="hs-cta" id="comprar">
+    <div class="hs-container">
+        <div class="hs-cta__inner">
+            <div>
+                <span class="hs-eyebrow" style="color:var(--teal);">Oferta de lanzamiento</span>
+                <h2 class="hs-cta__title">HealthSync SmartBand Pro</h2>
+                <p class="hs-cta__sub">Incluye pulsera, cargador magnético, correa extra y 1 año de garantía.</p>
+                <div class="hs-cta__price">
+                    <span class="hs-cta__old-price">$129.99</span>
+                    <span class="hs-cta__current-price">$89.99</span>
+                </div>
+            </div>
+            <div class="hs-cta__action">
+                <form asp-controller="Cart" asp-action="Add" method="post">
+                    <input type="hidden" name="Id" value="healthsync-watch-001" />
+                    <input type="hidden" name="Name" value="HealthSync SmartBand Pro" />
+                    <input type="hidden" name="Price" value="89.99" />
+                    <input type="hidden" name="Quantity" value="1" />
+                    <button type="submit" class="hs-btn hs-btn--primary hs-btn--lg" id="btn-buy-cta">
+                        🛒 Agregar al carrito
+                    </button>
+                </form>
+                <span class="hs-cta__disclaimer">Envío gratis a todo El Salvador · Pago seguro</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script>
+        // Manejo AJAX de los formularios de compra
+        document.querySelectorAll('form[action*="Cart/Add"]').forEach(form => {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const formData = new FormData(this);
+                fetch('/Cart/Add', {
+                    method: 'POST',
+                    body: formData,
+                    headers: { 'X-Requested-With': 'XMLHttpRequest' }
+                })
+                .then(r => r.json())
+                .then(data => {
+                    if (data.success) {
+                        // Actualizar contador
+                        const countEl = document.getElementById('cart-count');
+                        if (countEl) {
+                            countEl.textContent = data.count;
+                            countEl.style.display = 'inline-block';
+                        }
+                        // Mostrar toast
+                        showToast('✓ Producto agregado al carrito');
+                    }
+                })
+                .catch(err => {
+                    console.error(err);
+                    this.submit(); // Fallback
+                });
+            });
+        });
+
+        function showToast(message) {
+            const toast = document.createElement('div');
+            toast.textContent = message;
+            toast.style.cssText = `
+                position: fixed;
+                bottom: 24px;
+                right: 24px;
+                background: #0B1F3A;
+                color: white;
+                padding: 16px 24px;
+                border-radius: 12px;
+                box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+                z-index: 9999;
+                font-family: Inter, sans-serif;
+                font-size: 0.95rem;
+                animation: fadeUp 0.3s ease;
+                border-left: 4px solid #00C9B1;
+            `;
+            document.body.appendChild(toast);
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                toast.style.transition = 'opacity 0.3s';
+                setTimeout(() => toast.remove(), 300);
+            }, 2500);
+        }
+    </script>
+}

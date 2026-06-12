@@ -1,0 +1,95 @@
+﻿@model List<HealthSync.Models.CartItem>
+@{
+    ViewData["Title"] = "Carrito - HealthSync";
+}
+
+<section class="hs-page-header">
+    <div class="hs-container">
+        <span class="hs-eyebrow">Tu compra</span>
+        <h1 class="hs-page-header__title">Carrito de compras</h1>
+        <p class="hs-page-header__sub">@Model.Count producto(s) en tu carrito</p>
+    </div>
+</section>
+
+<section class="hs-privacy">
+    <div class="hs-container">
+        @if (Model.Any())
+        {
+            <div style="display:grid; grid-template-columns: 2fr 1fr; gap:40px; align-items:start;">
+                <!-- Lista de productos -->
+                <div>
+                    @foreach (var item in Model)
+                    {
+                        <div style="background:white; border-radius:16px; padding:24px; margin-bottom:16px; box-shadow:0 4px 24px rgba(11,31,58,0.08); display:flex; gap:20px; align-items:center; border:1px solid #F0F4F8;">
+                            <div style="width:80px; height:80px; background:linear-gradient(135deg, #0B1F3A, #122947); border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:2rem; flex-shrink:0;">
+                                @item.Image
+                            </div>
+                            <div style="flex:1;">
+                                <h3 style="font-family:'Sora',sans-serif; font-size:1.1rem; font-weight:700; color:#0B1F3A; margin-bottom:4px;">@item.Name</h3>
+                                <p style="color:#00C9B1; font-weight:700; font-size:1.1rem; margin:0;">$@item.Price.ToString("F2")</p>
+                            </div>
+                            <div style="display:flex; align-items:center; gap:12px;">
+                                <form asp-action="Update" method="post" style="display:flex; align-items:center; gap:8px;">
+                                    <input type="hidden" name="id" value="@item.Id" />
+                                    <button type="submit" name="quantity" value="@(item.Quantity - 1)" class="hs-btn" style="padding:6px 12px; background:#F0F4F8; color:#0B1F3A; font-size:1.1rem;" @(item.Quantity <= 1 ? "disabled" : "")>−</button>
+                                    <span style="font-weight:700; min-width:30px; text-align:center; color:#0B1F3A;">@item.Quantity</span>
+                                    <button type="submit" name="quantity" value="@(item.Quantity + 1)" class="hs-btn" style="padding:6px 12px; background:#F0F4F8; color:#0B1F3A; font-size:1.1rem;">+</button>
+                                </form>
+                            </div>
+                            <div style="text-align:right; min-width:100px;">
+                                <p style="font-family:'Sora',sans-serif; font-size:1.2rem; font-weight:700; color:#0B1F3A; margin:0;">$@item.Subtotal.ToString("F2")</p>
+                                <form asp-action="Remove" method="post" style="margin-top:8px;">
+                                    <input type="hidden" name="id" value="@item.Id" />
+                                    <button type="submit" style="background:none; border:none; color:#e74c3c; cursor:pointer; font-size:0.85rem; text-decoration:underline;">Eliminar</button>
+                                </form>
+                            </div>
+                        </div>
+                    }
+
+                    <div style="display:flex; gap:12px; margin-top:24px;">
+                        <a asp-controller="Home" asp-action="Index" class="hs-btn hs-btn--ghost" style="border-color:#0B1F3A; color:#0B1F3A;">← Seguir comprando</a>
+                        <form asp-action="Clear" method="post">
+                            <button type="submit" class="hs-btn" style="background:#e74c3c; color:white;" onclick="return confirm('¿Vaciar carrito?')">🗑 Vaciar carrito</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Resumen -->
+                <div style="background:white; border-radius:16px; padding:32px; box-shadow:0 4px 24px rgba(11,31,58,0.08); border:1px solid #F0F4F8; position:sticky; top:92px;">
+                    <h3 style="font-family:'Sora',sans-serif; font-size:1.2rem; font-weight:700; color:#0B1F3A; margin-bottom:20px;">Resumen del pedido</h3>
+                    
+                    <div style="display:flex; justify-content:space-between; margin-bottom:12px; color:#5A6A80;">
+                        <span>Subtotal</span>
+                        <span style="font-weight:600; color:#0B1F3A;">$@ViewBag.Subtotal.ToString("F2")</span>
+                    </div>
+                    <div style="display:flex; justify-content:space-between; margin-bottom:12px; color:#5A6A80;">
+                        <span>IVA (13%)</span>
+                        <span style="font-weight:600; color:#0B1F3A;">$@ViewBag.IVA.ToString("F2")</span>
+                    </div>
+                    <div style="display:flex; justify-content:space-between; margin-bottom:20px; color:#5A6A80;">
+                        <span>Envío</span>
+                        <span style="font-weight:600; color:#00C9B1;">GRATIS</span>
+                    </div>
+
+                    <div style="border-top:2px solid #F0F4F8; padding-top:20px; display:flex; justify-content:space-between; align-items:center; margin-bottom:24px;">
+                        <span style="font-family:'Sora',sans-serif; font-weight:700; color:#0B1F3A; font-size:1.1rem;">Total</span>
+                        <span style="font-family:'Sora',sans-serif; font-weight:800; color:#00C9B1; font-size:1.6rem;">$@ViewBag.Total.ToString("F2")</span>
+                    </div>
+
+                    <a asp-action="Checkout" class="hs-btn hs-btn--primary hs-btn--lg" style="width:100%;">Proceder al pago →</a>
+
+                    <p style="font-size:0.8rem; color:#5A6A80; text-align:center; margin-top:16px;">🔒 Pago 100% seguro</p>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div style="text-align:center; padding:60px 20px;">
+                <div style="font-size:4rem; margin-bottom:16px;"></div>
+                <h2 style="font-family:'Sora',sans-serif; font-size:1.8rem; color:#0B1F3A; margin-bottom:12px;">Tu carrito está vacío</h2>
+                <p style="color:#5A6A80; margin-bottom:24px;">Agrega productos para comenzar tu compra</p>
+                <a asp-controller="Home" asp-action="Index" class="hs-btn hs-btn--primary hs-btn--lg">Ver productos</a>
+            </div>
+        }
+    </div>
+</section>

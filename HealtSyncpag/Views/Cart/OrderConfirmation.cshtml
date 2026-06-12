@@ -1,0 +1,48 @@
+﻿@model HealthSync.Models.OrderConfirmationModel
+@{
+    ViewData["Title"] = "Pedido confirmado - HealthSync";
+}
+
+<section class="hs-hero" style="min-height:auto; padding:120px 0 80px;">
+    <div class="hs-container" style="text-align:center;">
+        <div style="width:80px; height:80px; background:#00C9B1; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:2.5rem; margin:0 auto 24px; animation:fadeUp 0.5s ease;">✓</div>
+        <span class="hs-eyebrow" style="color:var(--teal);">¡Pedido confirmado!</span>
+        <h1 class="hs-page-header__title" style="margin-bottom:16px;">Gracias por tu compra</h1>
+        <p style="color:rgba(255,255,255,0.7); font-size:1.1rem; max-width:500px; margin:0 auto 32px;">
+            Hemos recibido tu pedido y te enviaremos los detalles a tu correo electrónico.
+        </p>
+    </div>
+</section>
+
+<section class="hs-privacy">
+    <div class="hs-container" style="max-width:700px;">
+        <div style="background:white; border-radius:16px; padding:40px; box-shadow:0 4px 24px rgba(11,31,58,0.08);">
+            <h3 style="font-family:'Sora',sans-serif; font-size:1.3rem; font-weight:700; color:#0B1F3A; margin-bottom:24px; text-align:center;">📦 Detalles de tu orden</h3>
+
+            <div style="background:#F0F4F8; border-radius:12px; padding:20px; margin-bottom:24px;">
+                <div style="display:flex; justify-content:space-between; margin-bottom:12px;">
+                    <span style="color:#5A6A80; font-size:0.9rem;">Número de orden</span>
+                    <span style="font-family:'Sora',sans-serif; font-weight:700; color:#0B1F3A;">@Model.OrderNumber</span>
+                </div>
+                <div style="display:flex; justify-content:space-between; margin-bottom:12px;">
+                    <span style="color:#5A6A80; font-size:0.9rem;">Fecha</span>
+                    <span style="font-weight:600; color:#0B1F3A;">@Model.OrderDate.ToString("dd/MM/yyyy HH:mm")</span>
+                </div>
+                <div style="display:flex; justify-content:space-between;">
+                    <span style="color:#5A6A80; font-size:0.9rem;">Total pagado</span>
+                    <span style="font-family:'Sora',sans-serif; font-weight:800; color:#00C9B1; font-size:1.3rem;">$@Model.Total.ToString("F2")</span>
+                </div>
+            </div>
+
+            <div style="border-left:4px solid #00C9B1; padding:16px 20px; background:#F0F4F8; border-radius:8px; margin-bottom:24px;">
+                <p style="margin:0; color:#0B1F3A; font-size:0.95rem;">
+                    <strong>📧</strong> Te enviaremos un correo con el número de guía de seguimiento en las próximas 24 horas.
+                </p>
+            </div>
+
+            <div style="text-align:center;">
+                <a asp-controller="Home" asp-action="Index" class="hs-btn hs-btn--primary hs-btn--lg">Volver al inicio</a>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="HealthSync – Pulsera inteligente de monitoreo de salud en tiempo real." />
+    <title>@ViewData["Title"]</title>
+
+    <!-- Bootstrap (incluido por defecto en ASP.NET MVC) -->
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+    <!-- HealthSync estilos personalizados -->
+    <link rel="stylesheet" href="~/css/healthsync.css" asp-append-version="true" />
+</head>
+<body>
+
+    <!-- ── NAVBAR ── -->
+    <header class="hs-navbar">
+        <div class="hs-container hs-navbar__inner">
+            <a class="hs-navbar__brand" asp-area="" asp-controller="Home" asp-action="Index">
+                <span class="hs-navbar__logo-icon">♥</span>
+                Health<span class="hs-accent">Sync</span>
+            </a>
+
+            <input type="checkbox" id="hs-nav-toggle" class="hs-nav-checkbox" hidden />
+            <label for="hs-nav-toggle" class="hs-nav-hamburger" aria-label="Abrir menú">
+                <span></span><span></span><span></span>
+            </label>
+
+            <nav class="hs-navbar__links">
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="hs-navbar__link">Inicio</a>
+                <a asp-area="" asp-controller="Home" asp-action="About" class="hs-navbar__link">Nosotros</a>
+                <a href="/#caracteristicas" class="hs-navbar__link">Características</a>
+                <a href="/#comprar" class="hs-navbar__link">Comprar</a>
+                <a asp-area="" asp-controller="Home" asp-action="Privacy" class="hs-navbar__link">Privacidad</a>
+                <a asp-controller="Cart" asp-action="Index" class="hs-navbar__link" style="position:relative;">
+                    🛒 Carrito
+                    @{
+                        var cartCount = HealthSync.Models.Cart.GetTotalItems(Context);
+                    }
+                    @if (cartCount > 0)
+                    {
+                        <span id="cart-count" style="background:#00C9B1; color:#0B1F3A; border-radius:50%; padding:2px 7px; font-size:0.75rem; font-weight:700; margin-left:4px;">@cartCount</span>
+                    }
+                    else
+                    {
+                        <span id="cart-count" style="display:none;"></span>
+                    }
+                </a>
+                <a href="/#comprar" class="hs-btn hs-btn--primary" style="padding:10px 22px; font-size:0.88rem;">Comprar $89.99</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ── CONTENIDO PRINCIPAL ── -->
+    <main>
+        @RenderBody()
+    </main>
+
+    <!-- ── FOOTER ── -->
+    <footer class="hs-footer">
+        <div class="hs-container hs-footer__inner">
+            <div class="hs-footer__brand">
+                <span class="hs-navbar__brand">
+                    <span class="hs-navbar__logo-icon">♥</span>
+                    Health<span class="hs-accent">Sync</span>
+                </span>
+                <p>Tecnología que cuida tu salud, cada latido del día.</p>
+            </div>
+            <div class="hs-footer__links">
+                <strong>Producto</strong>
+                <a href="/#caracteristicas">Características</a>
+                <a href="/#comprar">Precios</a>
+                <a href="#">App móvil</a>
+            </div>
+            <div class="hs-footer__links">
+                <strong>Legal</strong>
+                <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacidad</a>
+                <a href="#">Términos de uso</a>
+                <a href="#">Garantía</a>
+            </div>
+            <div class="hs-footer__links">
+                <strong>Contacto</strong>
+                <a href="mailto:hola@healthsync.sv">hola@healthsync.sv</a>
+                <a href="#">Soporte técnico</a>
+                <a href="#">WhatsApp</a>
+            </div>
+        </div>
+        <div class="hs-footer__bottom">
+            <div class="hs-container">
+                <span>&copy; @DateTime.Now.Year HealthSync · Universidad de El Salvador, FMO</span>
+                <span>Hecho con ♥ en El Salvador</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+
+</body>
+</html>

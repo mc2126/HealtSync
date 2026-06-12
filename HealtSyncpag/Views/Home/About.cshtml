@@ -1,0 +1,304 @@
+﻿<style>
+    /* Contenedor general para centrar y limitar el ancho en pantallas grandes */
+    .hs-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 16px;
+    }
+
+    /* --- SECCIÓN LOGO --- */
+    .hs-logo-wrapper {
+        text-align: center;
+        margin-bottom: 64px;
+        padding: 48px 24px;
+        background: linear-gradient(135deg, #F0F4F8 0%, #FFFFFF 100%);
+        border-radius: 24px;
+    }
+    .hs-logo-card {
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        padding: 32px 24px;
+        background: white;
+        border-radius: 20px;
+        box-shadow: 0 8px 32px rgba(11,31,58,0.12);
+        width: 100%;
+        max-width: 500px;
+    }
+    .hs-logo-box {
+        width: 120px;
+        height: 120px;
+        background: linear-gradient(135deg, #0B1F3A, #122947);
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+    }
+    .hs-logo-box img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        padding: 10px;
+    }
+
+    /* --- SECCIÓN VALORES --- */
+    .hs-values-section {
+        background: linear-gradient(135deg, #0B1F3A 0%, #122947 100%);
+        border-radius: 20px;
+        padding: 48px 24px;
+        margin-bottom: 48px;
+    }
+    /* El truco mágico para móviles: auto-fit */
+    .hs-values-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 24px;
+        margin-top: 32px;
+    }
+    .hs-value-item {
+        text-align: center;
+        padding: 16px;
+    }
+
+    /* --- SECCIÓN EQUIPO --- */
+    .hs-team-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 24px;
+        margin-bottom: 64px;
+    }
+    .hs-team-card {
+        background: white;
+        border-radius: 20px;
+        padding: 32px 24px;
+        text-align: center;
+        box-shadow: 0 4px 24px rgba(11,31,58,0.08);
+        border: 1px solid #F0F4F8;
+        transition: all 0.3s ease;
+    }
+    .hs-team-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 32px rgba(11,31,58,0.15);
+    }
+    .hs-team-img-box {
+        width: 140px;
+        height: 140px;
+        margin: 0 auto 20px;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 4px solid #00C9B1;
+        box-shadow: 0 8px 24px rgba(0,201,177,0.3);
+    }
+    .hs-team-img-box img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .hs-social-links {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+    }
+    .hs-social-link {
+        color: #0B1F3A;
+        font-size: 1.2rem;
+        text-decoration: none;
+        transition: color 0.2s;
+    }
+    .hs-social-link:hover {
+        color: #00C9B1;
+    }
+
+    /* --- TIPOGRAFÍA --- */
+    .hs-title-main {
+        font-family: 'Sora', sans-serif;
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: white;
+        text-align: center;
+        margin: 0 0 16px 0;
+    }
+    .hs-title-sub {
+        font-family: 'Sora', sans-serif;
+        font-size: 1.8rem;
+        font-weight: 800;
+        color: #0B1F3A;
+        margin: 0;
+        line-height: 1.1;
+    }
+    .hs-team-name {
+        font-family: 'Sora', sans-serif;
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #0B1F3A;
+        margin-bottom: 4px;
+    }
+    .hs-role {
+        color: #00C9B1;
+        font-weight: 600;
+        font-size: 0.9rem;
+        margin-bottom: 12px;
+    }
+    .hs-desc {
+        font-size: 0.85rem;
+        color: #5A6A80;
+        line-height: 1.6;
+        margin-bottom: 16px;
+    }
+    .hs-text-light {
+        font-size: 0.95rem;
+        color: rgba(255,255,255,0.65);
+        text-align: center;
+        line-height: 1.6;
+        max-width: 700px;
+        margin: 0 auto;
+    }
+    .hs-slogan {
+        font-size: 0.95rem;
+        color: #5A6A80;
+        margin: 8px 0 0;
+        font-style: italic;
+    }
+
+    /* --- AJUSTES ESPECÍFICOS PARA MÓVILES --- */
+    @@media (max-width: 768px) {
+        .hs-logo-wrapper { padding: 32px 16px; margin-bottom: 32px; }
+        .hs-values-section { padding: 32px 16px; margin-bottom: 32px; }
+        .hs-title-main { font-size: 1.3rem; }
+        .hs-title-sub { font-size: 1.5rem; }
+        .hs-logo-box { width: 100px; height: 100px; }
+        .hs-team-card { padding: 24px 16px; }
+    }
+</style>
+
+<div class="hs-container">
+
+    <!-- 1. SECCIÓN LOGO Y SLOGAN -->
+    <div class="hs-logo-wrapper">
+        <div class="hs-logo-card">
+            <div class="hs-logo-box">
+                <img src="~/imagenes/logo healt sync2.jpeg" alt="HealthSync Logo" onerror="this.style.display='none'; this.parentElement.innerHTML='♥'">
+            </div>
+            <div style="text-align:center;">
+                <h2 class="hs-title-sub">Health<span style="color:#00C9B1;">Sync</span></h2>
+                <p class="hs-slogan">"Tecnología que cuida tu salud, cada latido del día"</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. SECCIÓN VALORES -->
+    <div class="hs-values-section">
+        <h3 class="hs-title-main">Nuestros Valores</h3>
+        <p class="hs-text-light">
+            Los valores representan los principios éticos y profesionales bajo los cuales la empresa desarrollará sus funciones, buscando siempre brindar confianza, seguridad y satisfacción a los clientes.
+        </p>
+        <div class="hs-values-grid">
+            <div class="hs-value-item">
+                <div style="font-size:2.5rem; margin-bottom:12px;">🎯</div>
+                <h4 class="hs-role" style="font-size:1.1rem; color:#00C9B1;">Responsabilidad</h4>
+                <p class="hs-desc" style="color:rgba(255,255,255,0.65);">Ofrecer un producto útil para situaciones de emergencia.</p>
+            </div>
+            <div class="hs-value-item">
+                <div style="font-size:2.5rem; margin-bottom:12px;">💚</div>
+                <h4 class="hs-role" style="font-size:1.1rem; color:#00C9B1;">Compromiso con la salud</h4>
+                <p class="hs-desc" style="color:rgba(255,255,255,0.65);">Ayudar a proteger la vida de las personas.</p>
+            </div>
+            <div class="hs-value-item">
+                <div style="font-size:2.5rem; margin-bottom:12px;">⭐</div>
+                <h4 class="hs-role" style="font-size:1.1rem; color:#00C9B1;">Calidad</h4>
+                <p class="hs-desc" style="color:rgba(255,255,255,0.65);">Fabricar pulseras resistentes y duraderas.</p>
+            </div>
+            <div class="hs-value-item">
+                <div style="font-size:2.5rem; margin-bottom:12px;">🛡️</div>
+                <h4 class="hs-role" style="font-size:1.1rem; color:#00C9B1;">Seguridad</h4>
+                <p class="hs-desc" style="color:rgba(255,255,255,0.65);">Garantizar que la información médica esté visible y segura.</p>
+            </div>
+            <div class="hs-value-item">
+                <div style="font-size:2.5rem; margin-bottom:12px;">🤝</div>
+                <h4 class="hs-role" style="font-size:1.1rem; color:#00C9B1;">Solidaridad</h4>
+                <p class="hs-desc" style="color:rgba(255,255,255,0.65);">Pensar en el bienestar de niños, adultos mayores y pacientes.</p>
+            </div>
+            <div class="hs-value-item">
+                <div style="font-size:2.5rem; margin-bottom:12px;">✅</div>
+                <h4 class="hs-role" style="font-size:1.1rem; color:#00C9B1;">Honestidad</h4>
+                <p class="hs-desc" style="color:rgba(255,255,255,0.65);">Transparencia sobre el funcionamiento, beneficios y limitaciones de la pulsera.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. SECCIÓN EQUIPO -->
+    <div class="hs-team-grid">
+        <!-- Miembro 1 -->
+        <div class="hs-team-card">
+            <div class="hs-team-img-box">
+                <img src="~/imagenes/maria2.jpeg" alt="CEO" onerror="this.src='https://ui-avatars.com/api/?name=Maria+Montesinos&background=0B1F3A&color=00C9B1&size=280'">
+            </div>
+            <h3 class="hs-team-name">Maria Montesinos</h3>
+            <p class="hs-role">Directora General (CEO)</p>
+            <p class="hs-desc">Dirigir estratégicamente la empresa HealtSync, supervisando el cumplimiento de los objetivos generales y el crecimiento de la organización.</p>
+            <div class="hs-social-links">
+                <a href="#" class="hs-social-link"></a>
+                <a href="#" class="hs-social-link">💼</a>
+            </div>
+        </div>
+
+        <!-- Miembro 2 -->
+        <div class="hs-team-card">
+            <div class="hs-team-img-box">
+                <img src="~/imagenes/sdirson.jpeg" alt="CTO" onerror="this.src='https://ui-avatars.com/api/?name=Sdirson+Zelaya&background=0B1F3A&color=00C9B1&size=280'">
+            </div>
+            <h3 class="hs-team-name">Sdirson Zelaya</h3>
+            <p class="hs-role">Director de Tecnología (CTO)</p>
+            <p class="hs-desc">Supervisar el desarrollo de la App, asegurar la estabilidad de la sincronización en la nube y optimizar los algoritmos de detección.</p>
+            <div class="hs-social-links">
+                <a href="#" class="hs-social-link">📧</a>
+                <a href="#" class="hs-social-link">💼</a>
+            </div>
+        </div>
+
+        <!-- Miembro 3 -->
+        <div class="hs-team-card">
+            <div class="hs-team-img-box">
+                <img src="~/imagenes/armando.jpeg" alt="Calidad Médica" onerror="this.src='https://ui-avatars.com/api/?name=Armando+Perez&background=0B1F3A&color=00C9B1&size=280'">
+            </div>
+            <h3 class="hs-team-name">Armando Perez</h3>
+            <p class="hs-role">Coordinador de Calidad Médica</p>
+            <p class="hs-desc">Validar que los sensores mantengan precisión clínica, supervisar que las alertas funcionen correctamente y asegurar normas de salud.</p>
+            <div class="hs-social-links">
+                <a href="#" class="hs-social-link">📧</a>
+                <a href="#" class="hs-social-link">💼</a>
+            </div>
+        </div>
+
+        <!-- Miembro 4 -->
+        <div class="hs-team-card">
+            <div class="hs-team-img-box">
+                <img src="~/imagenes/german.jpeg" alt="Alianzas" onerror="this.src='https://ui-avatars.com/api/?name=German+Campos&background=0B1F3A&color=00C9B1&size=280'">
+            </div>
+            <h3 class="hs-team-name">German Campos</h3>
+            <p class="hs-role">Gerente de Alianzas Estratégicas</p>
+            <p class="hs-desc">Establecer y gestionar relaciones con instituciones clave (clínicas, farmacias y residencias) para expandir la presencia de HealtSync.</p>
+            <div class="hs-social-links">
+                <a href="#" class="hs-social-link">📧</a>
+                <a href="#" class="hs-social-link">💼</a>
+            </div>
+        </div>
+
+        <!-- Miembro 5 -->
+        <div class="hs-team-card">
+            <div class="hs-team-img-box">
+                <img src="~/imagenes/rosita.jpeg" alt="Administrativo" onerror="this.src='https://ui-avatars.com/api/?name=Rosa+Santos&background=0B1F3A&color=00C9B1&size=280'">
+            </div>
+            <h3 class="hs-team-name">Rosa Santos</h3>
+            <p class="hs-role">Gerente Administrativo y Financiero</p>
+            <p class="hs-desc">Supervisar la planificación financiera, controlar presupuestos, gestionar pagos y asegurar el cumplimiento de obligaciones fiscales.</p>
+            <div class="hs-social-links">
+                <a href="#" class="hs-social-link">📧</a>
+                <a href="#" class="hs-social-link">💼</a>
+            </div>
+        </div>
+    </div>
+
+</div>
