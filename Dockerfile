@@ -4,8 +4,8 @@ EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
-COPY ["HealthSyncpag.csproj", "."]
-RUN dotnet restore "./HealthSyncpag.csproj"
+COPY ["HealtSyncpag.csproj", "."]
+RUN dotnet restore "./HealtSyncpag.csproj"
 COPY . .
 RUN dotnet build "HealthSyncpag.csproj" -c Release -o /app/build
 
